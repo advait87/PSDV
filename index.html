@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>H2O Wave</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<h1>H2O Wave</h1>
+		<nav id="navbar">
+			<h3>Table of Contents</h3>
+			<ul id="navbar_items">
+				<a href="#introduction"><li class="navbar_item">What's H2O Wave</li></a>
+				<a href="#installation"><li class="navbar_item">Installation</li></a>
+				<a href="#creating_project"><li class="navbar_item">Creating your first project</li></a>
+				<a href="#example_project"><li class="navbar_item">Example project</li></a>
+			</ul>
+		</nav>
+
+		<main>
+			<h3 id="introduction">What's H2O Wave</h3>
+			<p>
+				H2O wave is an all in one front-end and backend solution to make real-time websites using python alone. Unlike the traditional way of making websites, you don't have to worry about HTML, CSS, or JS while making your webpages. You also don't have to handle HTTP requests in traditional sense. Whenever you make changes to data and save it, every instance where the data is displayed gets updated without the programmer tracking multiple instances.
+			</p>
+			<p>
+				Let us show you this behaviour using an example.
+			</p>
+
+			<div class="code-block">
+				<code>
+					from h2o_wave import Q, main, app, ui
+					<br>
+					<br>bean_count = 0
+					<br>
+					<br>@app('/counter')
+					<br>async def serve(q: Q):
+					<br>global bean_count
+					<br># Was the 'increment' button clicked?
+					<br>if q.args.increment:
+					<br>bean_count += 1
+					<br>
+					<br># Display a form on the page
+					<br>q.page['beans'] = ui.form_card(
+					<br>box='1 1 1 2',
+					<br>items=[
+					<br>ui.text_xl('Beans!'),
+					<br>ui.button(name='increment', label=f'{bean_count} beans'),
+					<br>],
+					<br>)
+					<br>
+    					<br># Save the page
+					<br>await q.page.save()
+				</code>
+			</div>
+			<br>
+			<p>
+				In the code above, the routing(don't worry if you don't know what it is), the user interface and the changes are all handled by H2O Wave alone. The output looks like below.
+			</p>
+			<br>
+			<video autoplay loop muted playsinline>
+  				:<source src="example_video.mp4" type="video/mp4">
+  				Your browser does not support the video tag.
+			</video>
+
+			<h3 id="installation">Installation</h3>
+			<p>
+				Installing H2O wave is a simple job with few steps. First of all, it is recommended to install H2O wave in a virtual environment. So let's create that. Now I'll start the virtual environment, and here we go, now we're ready to install H2O wave.
+			</p>
+			<p>
+				To install H2O wave in the virtual environment, run:
+			</p>
+			<div class="code-block">
+				<code>pip install h2o-wave</code>
+			</div>
+			<p>
+				You can also run H2O Wave University app, which gives you a more hands-on approach on learning H2O wave than reading through docs.
+			</p>
+			<p>
+				To do that, first install H2O Wave University app using the command:
+			</p>
+			<div class="code-block">
+				<code>pip install h2o_wave_university</code>
+			</div>
+			<p>
+				Then run the Wave University app using the command:
+			</p>
+			<div class="code-block">
+				<code>wave learn</code>
+			</div>
+			<p>
+				Go to URL shown in the terminal, and you'll be able to learn H2O Wave using Wave University.
+			</p>
+
+			<h3 id="creating_project">Making your first app</h3>
+			<p>
+				To create a project using H2O Wave, follow these steps:
+			</p>
+			<ol>
+				<li>
+					<p>Create a python file, you can use the following command</p>
+					<div class="code-block">
+						<code> touch server.py</code>
+					</div>
+				</li>
+				<li>
+					<p>Import H2O wave to the project</p>
+					<div class="code-block">
+						<code> import h2o_wave </code>
+					</div>
+					<p> or, for this example, you can just import the classes <i>ui</i> and <i>site</i>.</p>
+					<div class="code-block">
+						<code> from h2o_wave import ui, site</code>
+					</div>
+				</li>
+				<li>
+					<p>Look at the code below, it explains how you can handle routing, update info and create UI elements</p>
+					<div class="code-block">
+						<code>
+							from h2o_wave import site, ui
+							<br>
+							<br># Grab a reference to the page at route '/hello'
+							<br>page = site['/hello']
+							<br>
+							<br># Add a markdown card to the page.
+							<br>page['quote'] = ui.markdown_card(
+							<br>box='1 1 2 2',
+							<br>title='Hello World',
+							<br>content='"The Internet? Is that thing still around?" - *Homer Simpson*',
+							<br>)
+							<br>
+							<br># Finally, save the page.
+							<br>page.save()
+						</code>
+					</div>
+				</li>
+				<li>
+					<p>Run your program:</p>
+					<div class="code-block">
+						<code>python server.py</code>
+					</div>
+					<p>You can see your program by entering <i>http://localhost:10101/hello</i></p>
+					<p>It should look like the image below.</p>
+					<img src="./example.png">
+				</li>
+				<li>
+					<p>That's the end of the start! You just created your first H2O Wave app! You're the best programmer in the world!</p>
+					<p>You can learn more on how to use H2O Wave using H2O University app or read <a href="https://wave.h2o.ai/docs/getting-started"><i>Getting Started</i> at H2O Wave website.</a>
+					</p>
+				</li>
+			</ol>	
+		</main>
+	</body>
+</html>
+

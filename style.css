@@ -1,0 +1,37 @@
+*{
+}
+
+body {
+	background-color: #fff2e2;
+}
+
+@media screen and (min-width: 768px) {
+	body {
+
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 0 20%;
+	}
+}
+ul a {
+	font-family: sans-serif;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+p, h1, h3 {
+
+	font-family: sans-serif;
+}
+
+.code-block {
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	background-color: #333;
+	color: #fff;
+}
+
